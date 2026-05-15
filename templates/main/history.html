@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Route history — {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 py-10">
+  <h1 class="text-3xl font-extrabold">Your route history</h1>
+  <p class="text-sm text-slate-500 mt-1">Last 50 searches</p>
+  <div class="card mt-6 overflow-x-auto">
+    {% if items %}
+    <table class="w-full text-sm">
+      <thead><tr class="text-left text-xs uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-700">
+        <th class="py-2">When</th><th>Source</th><th>Destination</th><th>Time</th><th>Traffic</th>
+      </tr></thead>
+      <tbody>
+        {% for r in items %}
+        <tr class="border-b border-slate-100 dark:border-slate-800">
+          <td class="py-2">{{ r.created_at.strftime('%b %d, %H:%M') }}</td>
+          <td>{{ r.source }}</td><td>{{ r.destination }}</td>
+          <td>{{ r.best_time }} min</td>
+          <td><span class="badge {{ {'Low':'badge-low','Moderate':'badge-moderate','High':'badge-high','Severe':'badge-severe'}.get(r.traffic_level,'badge-moderate') }}">{{ r.traffic_level }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="text-slate-500 text-center py-6">No history yet — go plan a route!</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+{% block title %}FAQ — {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+
+<section class="relative overflow-hidden py-16 sm:py-20">
+
+    <!-- Background Effects -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-blue-500/10 blur-3xl rounded-full"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Header -->
+        <div class="text-center max-w-4xl mx-auto">
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-6">
+                ❓ Deep FAQ Knowledge Base
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight">
+                Frequently Asked Questions
+            </h1>
+
+            <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+                Search detailed questions and answers related to TAS,
+                AI-based ETA prediction, traffic analytics, login,
+                registration, dashboards, route history, algorithms,
+                and more.
+            </p>
+
+        </div>
+
+        <!-- Search Box -->
+        <div class="mt-12 max-w-3xl mx-auto">
+
+            <div class="relative">
+
+                <input
+                    type="text"
+                    id="faqSearch"
+                    placeholder="Search anything about TAS..."
+                    class="w-full rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-5 py-4 pl-14 text-base shadow-xl outline-none focus:ring-2 focus:ring-cyan-500"
+                >
+
+                <div class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-xl">
+                    🔍
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FAQ Container -->
+        <div id="faqContainer" class="mt-16 space-y-5">
+
+            {% set faqs = [
+
+                ('What is TAS?', 'TAS is an AI-powered intelligent traffic analytics and route optimization system developed using Flask, Machine Learning, MongoDB, OSRM, and graph algorithms.'),
+
+                ('What is the purpose of TAS?', 'TAS helps users predict ETA, analyze traffic conditions, optimize travel routes, and visualize intelligent traffic analytics.'),
+
+                ('Is TAS an AI-based application?', 'Yes. TAS integrates Machine Learning models for ETA prediction and traffic analytics.'),
+
+                ('Which technologies are used in TAS?', 'TAS uses Flask, Python, MongoDB, XGBoost, scikit-learn, Pandas, NumPy, Leaflet.js, OSRM, JavaScript, and TailwindCSS.'),
+
+                ('Is TAS mobile responsive?', 'Yes. TAS is fully optimized for mobile phones, tablets, laptops, and desktop systems.'),
+
+                ('How do I register in TAS?', 'Open the Register page, enter your details such as name, email, and password, then submit the registration form.'),
+
+                ('How do I login to TAS?', 'Open the Login page, enter your registered email and password, then click Login.'),
+
+                ('What should I do if I forget my password?', 'Use the Forgot Password option, verify your email or OTP, and create a new password.'),
+
+                ('Does TAS support OTP verification?', 'Yes. OTP verification is used for account security and password reset functionality.'),
+
+                ('Is user authentication secure?', 'Yes. TAS includes secure password hashing, OTP verification, protected routes, and session management.'),
+
+                ('Can users logout securely?', 'Yes. TAS supports secure session logout functionality.'),
+
+                ('How does TAS route planning work?', 'Users select source and destination, ML predicts ETA, Dijkstra finds shortest paths, DFS generates alternatives, and OSRM creates real-road routes.'),
+
+                ('Which algorithm is used for shortest path?', 'TAS uses the Dijkstra Algorithm for shortest and optimized route calculation.'),
+
+                ('How are alternative routes generated?', 'Alternative routes are generated using DFS (Depth First Search).'),
+
+                ('What is OSRM used for?', 'OSRM is used for road-snapped routing, route geometry generation, and real-road path visualization.'),
+
+                ('Does TAS show routes on a map?', 'Yes. Leaflet.js interactive maps are used to visualize routes and traffic conditions.'),
+
+                ('Can TAS calculate ETA?', 'Yes. TAS predicts ETA using Machine Learning and traffic analysis.'),
+
+                ('Can TAS analyze traffic conditions?', 'Yes. TAS performs intelligent traffic analysis using AI-based prediction systems.'),
+
+                ('Does TAS support Bangalore routes?', 'Yes. The current dataset is Bangalore-focused, but the architecture supports expansion to other cities.'),
+
+                ('Which ML models are used?', 'TAS uses XGBoost and scikit-learn Machine Learning models for ETA prediction.'),
+
+                ('Does TAS use Deep Learning?', 'Currently TAS mainly uses Machine Learning models, but future versions may integrate Deep Learning models like LSTM.'),
+
+                ('Can the AI model improve over time?', 'Yes. Model accuracy improves with better training data, traffic patterns, and historical analysis.'),
+
+                ('How accurate is ETA prediction?', 'ETA accuracy depends on dataset quality, traffic conditions, and model training quality.'),
+
+                ('What analytics features are available?', 'TAS provides traffic analysis, route analytics, ETA insights, travel trends, and dashboard visualization.'),
+
+                ('How do I open the Analytics Dashboard?', 'Login to TAS and open the Analytics or Dashboard page.'),
+
+                ('Can users compare routes?', 'Yes. Users can compare multiple routes based on ETA, traffic, and distance.'),
+
+                ('Does TAS support charts and visualization?', 'Yes. The dashboard supports traffic analytics charts and visual insights.'),
+
+                ('Does TAS store route history?', 'Yes. User route searches and analytics history are stored securely.'),
+
+                ('How do I view my route history?', 'After login, open the History page to access previous routes and analytics.'),
+
+                ('Can users analyze previous routes?', 'Yes. Historical route data can be analyzed for traffic trends and ETA comparisons.'),
+
+                ('Is route history private?', 'Yes. Route history is associated with individual user accounts.'),
+
+                ('Does TAS include an Admin Dashboard?', 'Yes. TAS includes a dedicated Admin module and dashboard.'),
+
+                ('What can admins manage?', 'Admins can manage users, reports, feedback, analytics, logs, and system monitoring.'),
+
+                ('Does TAS support activity logging?', 'Yes. TAS stores activity logs and system events for monitoring.'),
+
+                ('Which database is used in TAS?', 'MongoDB is used for authentication, analytics, user history, and route storage.'),
+
+                ('Does TAS use APIs?', 'Yes. TAS integrates OSRM routing services and REST APIs.'),
+
+                ('Can TAS be deployed on cloud platforms?', 'Yes. TAS can be deployed on Render, Railway, AWS, Azure, and Google Cloud.'),
+
+                ('Does TAS support modular development?', 'Yes. The application uses Flask Blueprints for modular architecture.'),
+
+                ('Can TAS be expanded in the future?', 'Yes. The architecture supports IoT, smart city integration, GPS tracking, cloud deployment, and AI expansion.'),
+
+                ('Can users submit feedback?', 'Yes. TAS includes feedback and reporting functionality.'),
+
+                ('Can bugs or issues be reported?', 'Yes. Users can report login issues, route errors, bugs, and system problems.'),
+
+                ('Is TAS an MCA project?', 'Yes. TAS was developed as an MCA academic AI-integrated project.'),
+
+                ('What research areas are involved?', 'Research areas include Artificial Intelligence, Traffic Analytics, Machine Learning, Predictive Analytics, and Smart Transportation.'),
+
+                ('Why is TAS important?', 'TAS demonstrates how AI and graph algorithms can improve intelligent transportation systems.'),
+
+                ('Will TAS support GPS tracking?', 'Future versions may support live GPS tracking and vehicle monitoring.'),
+
+                ('Will TAS include a mobile app?', 'Yes. Android and iOS applications are planned for future versions.'),
+
+                ('Can TAS integrate IoT traffic sensors?', 'Yes. The architecture supports smart traffic sensor integration.'),
+
+                ('Can TAS predict traffic congestion?', 'Future AI models may support congestion forecasting and traffic density analysis.'),
+
+                ('Will TAS support cloud scalability?', 'Yes. Future cloud infrastructure will improve scalability and performance.'),
+
+                ('How do I search routes in TAS?', 'Enter source and destination locations to generate optimized travel routes.'),
+
+                ('How do I check ETA?', 'ETA is automatically displayed after route calculation.'),
+
+                ('How do I analyze traffic conditions?', 'Open the Analytics Dashboard to view traffic insights and route performance.'),
+
+                ('How do I compare different routes?', 'TAS displays alternative routes with ETA, distance, and traffic comparison.'),
+
+                ('How do I view analytics charts?', 'Analytics charts are available inside the Dashboard and Analytics pages.'),
+
+                ('How do I access previous searches?', 'Open the History page after logging into your account.'),
+
+                ('How do I verify my account?', 'Account verification is completed using OTP email verification.'),
+
+                ('How do I contact TAS developers?', 'Developer details are available on the Developer page.'),
+
+                ('How does TAS improve travel efficiency?', 'By combining AI prediction, optimized routing, traffic analytics, and alternative path generation.'),
+
+                ('Can TAS work with live traffic data?', 'Yes. The system architecture supports real-time traffic integration.'),
+
+                ('Does TAS support smart city applications?', 'Yes. TAS can be extended into intelligent transportation and smart city systems.')
+
+            ] %}
+
+            {% for question, answer in faqs %}
+
+            <div class="faq-item hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden">
+
+                <details open>
+
+                    <summary class="flex items-center justify-between gap-5 list-none p-6">
+
+                        <h3 class="faq-question text-base sm:text-lg font-semibold">
+                            {{ question }}
+                        </h3>
+
+                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl font-bold">
+                            ?
+                        </div>
+
+                    </summary>
+
+                    <div class="px-6 pb-6">
+
+                        <p class="faq-answer text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {{ answer }}
+                        </p>
+
+                    </div>
+
+                </details>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- No Results -->
+        <div id="noResult"
+             class="hidden text-center mt-16">
+
+            <div class="text-6xl mb-4">
+                😕
+            </div>
+
+            <h3 class="text-2xl font-bold">
+                No FAQ Found
+            </h3>
+
+            <p class="mt-3 text-slate-600 dark:text-slate-300">
+                Try searching using different keywords.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Search Script -->
+<script>
+
+const searchInput = document.getElementById("faqSearch");
+const faqItems = document.querySelectorAll(".faq-item");
+const noResult = document.getElementById("noResult");
+
+function highlightText(text, search) {
+
+    if (!search) return text;
+
+    const regex = new RegExp(`(${search})`, "gi");
+
+    return text.replace(
+        regex,
+        `<span class="bg-yellow-300 dark:bg-yellow-500/70 text-black px-1 rounded">$1</span>`
+    );
+}
+
+searchInput.addEventListener("keyup", function () {
+
+    const value = this.value.trim().toLowerCase();
+
+    let visibleCount = 0;
+
+    faqItems.forEach(item => {
+
+        const questionElement = item.querySelector(".faq-question");
+        const answerElement = item.querySelector(".faq-answer");
+
+        const originalQuestion =
+            questionElement.getAttribute("data-original") || questionElement.innerText;
+
+        const originalAnswer =
+            answerElement.getAttribute("data-original") || answerElement.innerText;
+
+        questionElement.setAttribute("data-original", originalQuestion);
+        answerElement.setAttribute("data-original", originalAnswer);
+
+        const question = originalQuestion.toLowerCase();
+        const answer = originalAnswer.toLowerCase();
+
+        // Hide all if search empty
+        if (value === "") {
+
+            item.classList.add("hidden");
+
+            questionElement.innerHTML = originalQuestion;
+            answerElement.innerHTML = originalAnswer;
+
+            return;
+        }
+
+        // Show matched items
+        if (question.includes(value) || answer.includes(value)) {
+
+            item.classList.remove("hidden");
+
+            questionElement.innerHTML =
+                highlightText(originalQuestion, value);
+
+            answerElement.innerHTML =
+                highlightText(originalAnswer, value);
+
+            visibleCount++;
+
+        } else {
+
+            item.classList.add("hidden");
+
+        }
+
+    });
+
+    // Show No Result
+    if (visibleCount === 0 && value !== "") {
+
+        noResult.classList.remove("hidden");
+
+    } else {
+
+        noResult.classList.add("hidden");
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

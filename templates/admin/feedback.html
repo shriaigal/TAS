@@ -1,0 +1,16 @@
+{% extends "admin/_layout.html" %}
+{% block title %}Feedback — Admin{% endblock %}
+{% block admin_content %}
+<div class="card">
+  <h2 class="text-xl font-bold mb-4">Feedback &amp; contact messages</h2>
+  <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+    {% for f in items %}
+    <li class="py-3">
+      <div class="flex justify-between text-sm"><b>{{ f.name }}</b><span class="text-xs text-slate-500">{{ f.created_at.strftime('%b %d, %H:%M') if f.created_at }}</span></div>
+      <div class="text-xs text-slate-500">{{ f.email }}</div>
+      <p class="mt-1 text-sm">{{ f.message }}</p>
+    </li>
+    {% else %}<p class="text-slate-500 text-center py-6">No messages.</p>{% endfor %}
+  </ul>
+</div>
+{% endblock %}

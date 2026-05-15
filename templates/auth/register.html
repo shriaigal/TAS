@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Register — {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-12">
+  <div class="card animate-fade-up">
+    <h1 class="text-2xl font-bold">Create your account</h1>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">It only takes a minute.</p>
+    <form method="post" class="mt-6 space-y-4">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <div>
+        <label class="text-sm font-medium" for="name">Full name</label>
+        <input id="name" name="name" required class="input mt-1"/>
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="email">Email</label>
+        <input id="email" name="email" type="email" required class="input mt-1"/>
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="phone">Phone</label>
+        <input id="phone" name="phone" required class="input mt-1" placeholder="+919999999999"/>
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="password">Password</label>
+        <input id="password" name="password" type="password" required class="input mt-1"/>
+        <p class="text-xs text-slate-500 mt-1">{{ rules }}</p>
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="confirm_password">Confirm password</label>
+        <input id="confirm_password" name="confirm_password" type="password" required class="input mt-1"/>
+      </div>
+      <button class="btn btn-primary w-full" type="submit">Create account</button>
+    </form>
+    <div class="text-sm mt-4 text-center">Already a member? <a href="{{ url_for('auth.login') }}" class="text-brand-600 hover:underline">Sign in</a></div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Login — {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-12">
+  <div class="card animate-fade-up">
+    <h1 class="text-2xl font-bold">Welcome back</h1>
+    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sign in to access your route planner.</p>
+    <form method="post" class="mt-6 space-y-4">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <div>
+        <label class="text-sm font-medium" for="email">Email</label>
+        <input id="email" name="email" type="email" required class="input mt-1" placeholder="you@example.com"/>
+      </div>
+      <div>
+        <label class="text-sm font-medium" for="password">Password</label>
+        <input id="password" name="password" type="password" required class="input mt-1" placeholder="••••••••"/>
+      </div>
+      
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" name="remember" class="h-4 w-4" required/><a href="{{ url_for('main.terms_and_conditions') }}" class="text-brand-600">Terms & Conditions</a></label>
+      
+      <button class="btn btn-primary w-full" type="submit">Sign in</button>
+    </form>
+    <div class="text-sm mt-4 flex justify-between">
+      <a href="{{ url_for('auth.forgot_password') }}" class="text-brand-600 hover:underline">Forgot password?</a>
+      <a href="{{ url_for('auth.register') }}" class="hover:underline">Create account →</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

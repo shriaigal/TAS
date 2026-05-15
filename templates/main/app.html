@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %}Route Planner — {{ APP_NAME }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6">
+  <div class="grid lg:grid-cols-12 gap-6">
+    <aside class="lg:col-span-4 space-y-4">
+      <div class="card animate-fade-up">
+        <h2 class="font-bold text-lg mb-1">Plan your route</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">ML-powered routing on real Bangalore data.</p>
+
+        <label class="text-sm font-medium" for="source">Source</label>
+        <div class="autocomplete mt-1">
+          <input id="source" class="input" placeholder="e.g. Indiranagar" autocomplete="off"/>
+          <ul class="suggestions" id="source-suggestions"></ul>
+        </div>
+
+        <label class="text-sm font-medium mt-4 block" for="destination">Destination</label>
+        <div class="autocomplete mt-1">
+          <input id="destination" class="input" placeholder="e.g. Electronic City" autocomplete="off"/>
+          <ul class="suggestions" id="destination-suggestions"></ul>
+        </div>
+
+       <button id="findBtn" class="btn btn-primary w-full mt-5">Find best route</button>
+        <div id="error" class="text-sm text-rose-600 mt-3"></div>
+      </div>
+
+      <div id="bestRouteCard" class="card hidden animate-fade-up">
+        <h3 class="font-bold mb-3">Best route</h3>
+        <div id="bestRouteInfo" class="space-y-2 text-sm"></div>
+      </div>
+
+      <div id="statsCard" class="card hidden animate-fade-up">
+        <h3 class="font-bold mb-3">Route statistics</h3>
+        <div id="statsGrid" class="grid grid-cols-2 gap-2 text-sm stats-grid"></div>
+      </div>
+
+      <!-- <div id="departureCard" class="card hidden animate-fade-up">
+        <h3 class="font-bold mb-1">Best departure</h3>
+        <div id="departureBody" class="text-sm"></div>
+      </div> -->
+    </aside>
+
+    <section class="lg:col-span-8 space-y-6">
+      <div class="card p-2">
+        <div id="map"></div>
+        <div id="loading" class="hidden text-center text-sm text-slate-500 mt-3">Computing routes…</div>
+        <!-- <div class="legend">
+          <span><i style="background:#22c55e"></i>Low</span>
+          <span><i style="background:#eab308"></i>Moderate</span>
+          <span><i style="background:#f97316"></i>High</span>
+          <span><i style="background:#ef4444"></i>Severe</span>
+        </div> -->
+      </div>
+
+      <!-- <div id="compareCard" class="card hidden animate-fade-up">
+        <h3 class="font-bold mb-3">Route comparison</h3>
+        <div class="chart-wrap"><canvas id="compareChart"></canvas></div>
+        <p class="text-xs text-slate-500 mt-2">Click a bar to highlight that route on the map.</p>
+      </div>
+
+      <div id="forecastCard" class="card hidden animate-fade-up">
+        <h3 class="font-bold mb-3">24-hour traffic forecast</h3>
+        <div class="chart-wrap"><canvas id="forecastChart"></canvas></div>
+      </div> -->
+    </section>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/route_planner.js') }}"></script>
+{% endblock %}

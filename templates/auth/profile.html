@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Profile — {{ APP_NAME }}{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-10">
+  <div class="card animate-fade-up">
+    <div class="flex items-center gap-4">
+      <div class="h-16 w-16 rounded-full bg-gradient-to-br from-brand-500 to-purple-600 grid place-items-center text-white text-2xl font-bold">
+        {{ current_user.name[:1]|upper }}
+      </div>
+      <div>
+        <h1 class="text-xl font-bold">{{ current_user.name }}</h1>
+        <p class="text-sm text-slate-500">{{ current_user.email }}</p>
+        <p class="text-xs mt-1">Role: <span class="badge {{ 'badge-low' if current_user.is_admin else 'badge-moderate' }}">{{ current_user.role }}</span></p>
+      </div>
+    </div>
+    <form method="post" class="mt-6 grid gap-4">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+      <div><label class="text-sm font-medium" for="name">Name</label><input id="name" name="name" class="input mt-1" value="{{ current_user.name }}" required/></div>
+      <div><label class="text-sm font-medium" for="phone">Phone</label><input id="phone" name="phone" class="input mt-1" value="{{ current_user.phone or '' }}"/></div>
+      <button class="btn btn-primary w-fit">Save changes</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

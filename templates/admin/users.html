@@ -1,0 +1,58 @@
+{% extends "admin/_layout.html" %}
+{% block title %}Users — Admin{% endblock %}
+{% block admin_content %}
+<div class="card">
+  <div class="flex flex-wrap items-center gap-3 justify-between">
+    <h2 class="text-xl font-bold">Users <span class="text-sm font-normal text-slate-500">({{ total }})</span></h2>
+    <form method="get" class="flex gap-2">
+      <input name="q" value="{{ search }}" class="input" placeholder="Search name, email, phone…"/>
+      <button class="btn btn-primary">Search</button>
+      <a href="{{ url_for('admin.export_users') }}" class="btn btn-ghost">Export</a>
+    </form>
+  </div>
+
+  <div class="mt-4 overflow-x-auto">
+    <table class="w-full text-sm">
+      <thead class="text-left text-xs uppercase tracking-wider text-slate-500 border-b border-slate-200 dark:border-slate-700">
+        <tr><th class="py-2">Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Status</th><th>Joined</th><th class="text-right">Actions</th></tr>
+      </thead>
+      <tbody>
+      {% for u in users %}
+        <tr class="border-b border-slate-100 dark:border-slate-800">
+          <td class="py-2 font-medium">{{ u.name }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.phone or '-' }}</td>
+          <td><span class="badge {{ 'badge-low' if u.role=='admin' else 'badge-moderate' }}">{{ u.role }}</span></td>
+          <td><span class="badge {{ 'badge-low' if u.is_active else 'badge-severe' }}">{{ 'Active' if u.is_active else 'Suspended' }}</span></td>
+          <td class="text-xs text-slate-500">{{ u.created_at.strftime('%b %d, %Y') if u.created_at else '-' }}</td>
+          <td class="text-right whitespace-nowrap">
+            {% if u.role != 'admin' %}
+            <form method="post" action="{{ url_for('admin.toggle_user', uid=u._id) }}" class="inline">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              <button class="btn btn-ghost text-xs">{{ 'Suspend' if u.is_active else 'Activate' }}</button>
+            </form>
+            <form method="post" action="{{ url_for('admin.delete_user', uid=u._id) }}" class="inline" onsubmit="return confirm('Delete this user permanently?')">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+              <button class="btn btn-danger text-xs">Delete</button>
+            </form>
+            {% else %}
+              <span class="text-xs text-slate-400">—</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% else %}
+        <tr><td colspan="7" class="text-center text-slate-500 py-6">No users found.</td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  {% if pages > 1 %}
+  <div class="mt-4 flex items-center justify-center gap-1">
+    {% for p in range(1, pages+1) %}
+      <a href="?q={{ search }}&page={{ p }}" class="px-3 py-1 rounded-md text-sm {{ 'bg-brand-500 text-white' if p==page else 'hover:bg-slate-100 dark:hover:bg-slate-800' }}">{{ p }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

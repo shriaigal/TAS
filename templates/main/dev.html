@@ -1,0 +1,463 @@
+{% extends "base.html" %}
+{% block title %}Developers — {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+
+<section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+
+    <!-- Background Effects -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 left-1/4 w-80 h-80 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-500/10 blur-3xl rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section -->
+        <div class="text-center max-w-4xl mx-auto">
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-6">
+                👨‍💻 Meet the Developers
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                Development Team of
+                <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    {{ APP_NAME }}
+                </span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+                The Traffic Analytics System (TAS) was developed as an MCA research and
+                development project focused on intelligent traffic optimization,
+                AI-driven ETA prediction, and smart route analytics.
+            </p>
+
+        </div>
+
+        <!-- Team Intro -->
+        <div class="mt-16">
+
+            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur p-8 lg:p-10 shadow-xl">
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+
+                    <div>
+                        <h2 class="text-3xl font-bold mb-5">
+                            Team Introduction
+                        </h2>
+
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                            Our development team worked on designing, developing,
+                            and integrating AI-based traffic analysis features
+                            with a modern full-stack architecture.
+                        </p>
+
+                        <div class="space-y-3">
+
+                            <div class="flex items-center gap-3">
+                                <span class="text-cyan-400 text-xl">✔</span>
+                                <p>AI & Machine Learning Integration</p>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="text-cyan-400 text-xl">✔</span>
+                                <p>Traffic Optimization Research</p>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="text-cyan-400 text-xl">✔</span>
+                                <p>Real-Time Route Analytics</p>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="text-cyan-400 text-xl">✔</span>
+                                <p>Full-Stack Flask Implementation</p>
+                            </div>
+
+                            <div class="flex items-center gap-3">
+                                <span class="text-cyan-400 text-xl">✔</span>
+                                <p>Interactive Visualization Systems</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Illustration -->
+                    <div class="flex justify-center">
+                        <div class="w-full max-w-md rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-10 shadow-2xl">
+
+                            <div class="grid grid-cols-2 gap-5">
+
+                                <div class="rounded-2xl bg-white dark:bg-slate-900 p-5 text-center shadow-lg">
+                                    <div class="text-4xl mb-3">🤖</div>
+                                    <p class="font-semibold text-sm">
+                                        Machine Learning
+                                    </p>
+                                </div>
+
+                                <div class="rounded-2xl bg-white dark:bg-slate-900 p-5 text-center shadow-lg">
+                                    <div class="text-4xl mb-3">🛣️</div>
+                                    <p class="font-semibold text-sm">
+                                        Route Optimization
+                                    </p>
+                                </div>
+
+                                <div class="rounded-2xl bg-white dark:bg-slate-900 p-5 text-center shadow-lg">
+                                    <div class="text-4xl mb-3">📊</div>
+                                    <p class="font-semibold text-sm">
+                                        Analytics
+                                    </p>
+                                </div>
+
+                                <div class="rounded-2xl bg-white dark:bg-slate-900 p-5 text-center shadow-lg">
+                                    <div class="text-4xl mb-3">🌍</div>
+                                    <p class="font-semibold text-sm">
+                                        Smart Traffic
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Developers -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    Developer Team
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+                <!-- Developer 1 -->
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden">
+
+                    <!-- Top -->
+                    <div class="p-8 border-b border-slate-200 dark:border-slate-800">
+
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+
+<div class="relative">
+
+    <img
+        src="{{ url_for('static', filename='img/shriaigal.jpg') }}"
+        alt="A S Shridatta Aigal"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover border-4 border-white dark:border-slate-800 shadow-2xl"
+    > 
+</div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold">
+                                    A S Shridatta Aigal
+                                </h3>
+
+                                <p class="text-cyan-400 font-medium mt-1">
+                                    MCA • Full-Stack Developer
+                                </p>
+
+                                <div class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+                                    <p><span class="font-semibold">Register No:</span> 1BY25MC001</p>
+                                    <p><span class="font-semibold">Department:</span> MCA</p>
+                                    <p><span class="font-semibold">College:</span> BMS Institute of Technology and Management</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Contribution -->
+                    <div class="p-8">
+
+                        <h4 class="text-xl font-bold mb-5">
+                            Role & Contribution
+                        </h4>
+
+                        <div class="space-y-3">
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Full-stack Flask application development</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>AI-based ETA prediction integration</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Route optimization logic implementation</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Interactive dashboard and UI development</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>MongoDB integration and backend architecture</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Links -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-8">
+
+                            <!-- Email -->
+                            <a href="mailto:shriaigal@gmail.com"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                📧 Email
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+916363352453"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                📞 Call
+                            </a>
+
+                            <!-- LinkedIn -->
+                             <a href="https://in.linkedin.com/in/a-s-shridatta-aigal-27b926323"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                🔗 LinkedIn
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/shriaigal"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                💻 GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Developer 2 -->
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl overflow-hidden">
+
+                    <!-- Top -->
+                    <div class="p-8 border-b border-slate-200 dark:border-slate-800">
+
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-5">
+
+                            <div class="relative">
+
+    <img
+        src="{{ url_for('static', filename='img/manvith.jpg') }}"
+        alt="Manvith A U"
+        class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl object-cover border-4 border-white dark:border-slate-800 shadow-2xl"
+    >
+</div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold">
+                                    Manvith A U
+                                </h3>
+
+                                <p class="text-cyan-400 font-medium mt-1">
+                                    MCA • Research & Analytics
+                                </p>
+
+                                <div class="mt-3 space-y-1 text-sm text-slate-600 dark:text-slate-300">
+                                    <p><span class="font-semibold">Register No:</span> 1BY25MC060</p>
+                                    <p><span class="font-semibold">Department:</span> MCA</p>
+                                    <p><span class="font-semibold">College:</span> BMS Institute of Technology and Management</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Contribution -->
+                    <div class="p-8">
+
+                        <h4 class="text-xl font-bold mb-5">
+                            Role & Contribution
+                        </h4>
+
+                        <div class="space-y-3">
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Traffic analytics research and testing</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Machine learning model assistance</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Route analysis and optimization support</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>Frontend design collaboration</p>
+                            </div>
+
+                            <div class="flex items-start gap-3">
+                                <span class="text-cyan-400">✔</span>
+                                <p>System validation and feature enhancement</p>
+                            </div>
+
+                        </div>
+
+                        <!-- Links -->
+                         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-8">
+
+                            <!-- Email -->
+                            <a href="mailto:shriaigal@gmail.com"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                📧 Email
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+916363352453"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                📞 Call
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://in.linkedin.com/in/a-s-shridatta-aigal-27b926323"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                🔗 LinkedIn
+                            </a>
+
+                            <!-- GitHub -->
+                            <a href="https://github.com/shriaigal"
+                            target="_blank"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-cyan-500 hover:text-cyan-400 transition text-sm">
+                                💻 GitHub
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Mission -->
+        <div class="mt-20">
+
+            <div class="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-8 lg:p-12 shadow-xl">
+
+                <div class="text-center max-w-4xl mx-auto">
+
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+                        Mission Statement
+                    </h2>
+
+                    <p class="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+                        To develop an intelligent traffic analytics platform that combines
+                        Artificial Intelligence, route optimization, and modern visualization
+                        techniques to improve travel efficiency and smart transportation research.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Technologies -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    Technologies Worked On
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+
+                {% set techs = [
+                    'Flask & Python',
+                    'MongoDB',
+                    'Machine Learning',
+                    'XGBoost',
+                    'scikit-learn',
+                    'TailwindCSS',
+                    'Leaflet.js',
+                    'OSRM Routing',
+                    'REST APIs',
+                    'JavaScript',
+                    'Analytics Engine',
+                    'Traffic Optimization'
+                ] %}
+
+                {% for tech in techs %}
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-5 px-4 text-center font-semibold shadow-lg hover:scale-105 transition">
+                    {{ tech }}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Future Goals -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    Future Goals
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                {% set goals = [
+                    '🚀 Real-time live traffic integration',
+                    '🚀 AI-powered congestion forecasting',
+                    '🚀 Smart city traffic analytics',
+                    '🚀 Cloud deployment scalability',
+                    '🚀 Mobile application expansion',
+                    '🚀 Advanced predictive modeling'
+                ] %}
+
+                {% for goal in goals %}
+                <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-lg hover:-translate-y-1 transition">
+
+                    <div class="text-3xl mb-4">
+                        🚀
+                    </div>
+
+                    <p class="font-semibold leading-relaxed">
+                        {{ goal }}
+                    </p>
+
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+{% block title %}Terms & Conditions — {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+
+<section class="relative min-h-screen py-12 sm:py-16 lg:py-20 overflow-x-hidden bg-gradient-to-b from-white via-slate-50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+
+  <!-- Background Effects -->
+  <div class="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+
+    <div class="absolute top-0 left-0 w-52 sm:w-80 h-52 sm:h-80 bg-brand-500/10 blur-3xl rounded-full"></div>
+
+    <div class="absolute bottom-0 right-0 w-52 sm:w-80 h-52 sm:h-80 bg-purple-500/10 blur-3xl rounded-full"></div>
+
+  </div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Hero -->
+    <div class="text-center mb-12 sm:mb-16">
+
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-500/20 bg-brand-500/10 text-brand-600 dark:text-brand-300 text-xs sm:text-sm font-semibold shadow-sm">
+        Legal Agreement
+      </span>
+
+      <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+      Terms & Conditions
+        </h1>
+
+      <p class="mt-5 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+        Please read these Terms and Conditions carefully before using {{ APP_NAME }}.
+        By accessing or using the platform, you agree to comply with the policies,
+        guidelines, and conditions outlined below.
+      </p>
+
+    </div>
+
+    <!-- Main Layout -->
+    <div class="grid lg:grid-cols-[260px,1fr] gap-8">
+
+      <!-- Sidebar -->
+      <aside class="hidden lg:block">
+
+        <div class="sticky top-24 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xl p-6">
+
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-5">
+            Sections
+          </h3>
+
+          <nav class="space-y-3 text-sm">
+
+            <a href="#introduction" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Introduction
+            </a>
+
+            <a href="#platform" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              About Platform
+            </a>
+
+            <a href="#eligibility" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Eligibility
+            </a>
+
+            <a href="#accounts" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              User Accounts
+            </a>
+
+            <a href="#acceptable" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Acceptable Use
+            </a>
+
+            <a href="#disclaimer" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Disclaimer
+            </a>
+
+            <a href="#privacy" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Privacy & Data
+            </a>
+
+            <a href="#liability" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Liability
+            </a>
+
+            <a href="#contact" class="block text-slate-600 dark:text-slate-400 hover:text-brand-600 transition">
+              Contact
+            </a>
+
+          </nav>
+
+        </div>
+
+      </aside>
+
+      <!-- Content -->
+      <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-2xl overflow-hidden">
+
+        <!-- Top Bar -->
+        <div class="border-b border-slate-200 dark:border-slate-800 px-6 sm:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+          <div>
+
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Effective Date
+            </p>
+
+            <h2 class="font-bold text-slate-900 dark:text-white">
+              May 1, 2026
+            </h2>
+
+          </div>
+
+          <div class="flex items-center gap-2 px-4 py-2 rounded-2xl bg-brand-500/10 text-brand-600 dark:text-brand-300 text-sm font-medium w-fit">
+            🚦 {{ APP_NAME }}
+          </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-6 sm:p-8 lg:p-10">
+
+          <div class="space-y-10 text-slate-700 dark:text-slate-300">
+
+            <!-- Section -->
+            <div id="introduction">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                1. Introduction
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                Welcome to {{ APP_NAME }} (“Platform”, “Service”, “we”, “our”, or “us”).
+                These Terms and Conditions govern your access to and use of the platform,
+                including all related route optimization tools, traffic analysis systems,
+                visualizations, and associated services.
+              </p>
+
+            </div>
+
+            <!-- Section -->
+            <div id="platform">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                2. About the Platform
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                {{ APP_NAME }} is designed to assist users in route planning,
+                navigation analysis, and traffic visualization across connected
+                road networks and travel paths.
+              </p>
+
+              <div class="mt-6 grid sm:grid-cols-2 gap-4">
+
+                <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-5">
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Route Optimization
+                  </h3>
+
+                  <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                    Analyze and compare travel paths for better navigation planning.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-5">
+                  <h3 class="font-semibold text-slate-900 dark:text-white">
+                    Traffic Visualization
+                  </h3>
+
+                  <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                    Understand travel conditions and route insights visually.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Section -->
+            <div id="eligibility">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                3. Eligibility
+              </h2>
+
+              <ul class="space-y-3 list-disc pl-5">
+
+                <li>You must be at least 13 years old.</li>
+
+                <li>You agree to use the platform lawfully.</li>
+
+                <li>You must not misuse or disrupt services.</li>
+
+                <li>You accept these Terms by using the platform.</li>
+
+              </ul>
+
+            </div>
+
+            <!-- Section -->
+            <div id="accounts">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                4. User Accounts
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                Certain features require account registration. Users are responsible
+                for maintaining account confidentiality and protecting login credentials.
+              </p>
+
+            </div>
+
+            <!-- Section -->
+            <div id="acceptable">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                5. Acceptable Use
+              </h2>
+
+              <div class="grid sm:grid-cols-2 gap-4">
+
+                <div class="rounded-2xl border border-red-200 dark:border-red-900 bg-red-50 dark:bg-red-950/20 p-5">
+
+                  <h3 class="font-semibold text-red-600">
+                    Restricted Activities
+                  </h3>
+
+                  <ul class="mt-3 space-y-2 text-sm">
+                    <li>• Unauthorized access</li>
+                    <li>• Uploading harmful code</li>
+                    <li>• Platform disruption</li>
+                    <li>• Reverse engineering</li>
+                  </ul>
+
+                </div>
+
+                <div class="rounded-2xl border border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/20 p-5">
+
+                  <h3 class="font-semibold text-emerald-600">
+                    Responsible Usage
+                  </h3>
+
+                  <ul class="mt-3 space-y-2 text-sm">
+                    <li>• Lawful access</li>
+                    <li>• Respect platform integrity</li>
+                    <li>• Maintain account security</li>
+                    <li>• Follow usage guidelines</li>
+                  </ul>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Section -->
+            <div id="disclaimer">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                6. Route & Traffic Disclaimer
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                Route analysis and traffic-related insights are generated using
+                available data and system-based estimations. We do not guarantee
+                complete route accuracy or uninterrupted availability.
+              </p>
+
+            </div>
+
+            <!-- Section -->
+            <div id="privacy">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                7. Privacy & Data Usage
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                We may collect account information, usage analytics,
+                login activity, and route selections for improving
+                platform performance and security monitoring.
+              </p>
+
+            </div>
+
+            <!-- Section -->
+            <div id="liability">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                8. Limitation of Liability
+              </h2>
+
+              <p class="leading-relaxed text-justify">
+                {{ APP_NAME }} shall not be liable for traffic delays,
+                navigation inaccuracies, service interruptions,
+                technical failures, or related losses arising from use of the platform.
+              </p>
+
+            </div>
+
+            <!-- Section -->
+            <div id="contact">
+
+              <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+                9. Contact Information
+              </h2>
+
+              <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-6">
+
+                <div class="space-y-4 text-sm sm:text-base">
+
+                  <div class="flex items-start gap-3">
+                    <span>📍</span>
+
+                    <p>
+                      Bangalore, Karnataka, India
+                    </p>
+                  </div>
+
+                  <div class="flex items-start gap-3">
+                    <span>📧</span>
+
+                    <p>
+                      contact@tasplatform.com
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+{% endblock %}

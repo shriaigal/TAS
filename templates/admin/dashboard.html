@@ -1,0 +1,74 @@
+{% extends "admin/_layout.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block admin_content %}
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  {% for label,val,emoji in [
+    ('Total users', stats.total_users, '👥'),
+    ('Active users', stats.active_users, '✅'),
+    ('Suspended', stats.suspended, '⛔'),
+    ('Feedback', stats.feedback, '💬'),
+    ('New (7d)', stats.new_week, '🆕'),
+    ('Logins (7d)', stats.logins_week, '🔓'),
+    ('Reports', stats.reports, '🚩'),
+  ] %}
+  <div class="card animate-fade-up">
+    <div class="flex items-center justify-between">
+      <div class="text-sm text-slate-500">{{ label }}</div><div class="text-2xl">{{ emoji }}</div>
+    </div>
+    <div class="text-3xl font-extrabold mt-1">{{ val }}</div>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h3 class="font-bold mb-3">Registrations — last 7 days</h3>
+  <canvas id="regChart" height="80"></canvas>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-6">
+  <div class="card">
+    <h3 class="font-bold mb-3">Recent users</h3>
+    <ul class="divide-y divide-slate-100 dark:divide-slate-800">
+      {% for u in recent_users %}
+      <li class="py-2 flex items-center gap-3 text-sm">
+        <div class="h-8 w-8 rounded-full bg-brand-500/15 text-brand-700 dark:text-brand-200 grid place-items-center font-bold">{{ (u.name or '?')[:1]|upper }}</div>
+        <div class="flex-1"><div class="font-medium">{{ u.name }}</div><div class="text-xs text-slate-500">{{ u.email }}</div></div>
+        <span class="badge {{ 'badge-low' if u.is_active else 'badge-severe' }}">{{ 'Active' if u.is_active else 'Suspended' }}</span>
+      </li>
+      {% else %}<p class="text-sm text-slate-500">No users yet.</p>{% endfor %}
+    </ul>
+  </div>
+  <div class="card">
+    <h3 class="font-bold mb-3">Recent activity</h3>
+    <ul class="text-sm divide-y divide-slate-100 dark:divide-slate-800">
+      {% for l in recent_logs %}
+      <li class="py-2 flex justify-between gap-3">
+        <span><b>{{ l.action }}</b> <span class="text-slate-500">— {{ l.ip or '-' }}</span></span>
+        <span class="text-xs text-slate-500">{{ l.created_at.strftime('%b %d %H:%M') if l.created_at }}</span>
+      </li>
+      {% else %}<p class="text-slate-500">No activity yet.</p>{% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+  const data = {{ chart|tojson }};
+  const ctx = document.getElementById('regChart');
+  const isDark = document.documentElement.classList.contains('dark');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.map(d => d.date),
+      datasets: [{
+        label: 'New users', data: data.map(d => d.count),
+        borderColor: '#3b6dff', backgroundColor: 'rgba(59,109,255,.15)',
+        tension: .35, fill: true, pointRadius: 4, pointBackgroundColor: '#3b6dff'
+      }]
+    },
+    options: { plugins: { legend: { display: false } },
+      scales: { x: { grid: { display:false } }, y: { beginAtZero: true, ticks: { precision: 0 } } } }
+  });
+</script>
+{% endblock %}

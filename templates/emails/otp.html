@@ -1,0 +1,17 @@
+{% set color = '#3b6dff' %}
+<div style="font-family:Inter,Arial,sans-serif;max-width:600px;margin:0 auto;background:#f8fafc;padding:24px;">
+  <div style="background:linear-gradient(135deg,#3b6dff,#7c3aed);padding:28px;border-radius:14px 14px 0 0;text-align:center;color:#fff;">
+    <h1 style="margin:0;font-size:22px;">{{ app_name }}</h1>
+    <p style="margin:6px 0 0;opacity:.9;">{{ purpose }}</p>
+  </div>
+  <div style="background:#fff;padding:28px;border-radius:0 0 14px 14px;">
+    <h2 style="margin:0 0 12px;color:#0f172a;">Hi {{ name }},</h2>
+    <p style="color:#475569;">Use the verification code below to continue.</p>
+    <div style="text-align:center;margin:22px 0;padding:18px;border:2px dashed #3b6dff;border-radius:12px;">
+      <span style="font-size:34px;font-weight:800;letter-spacing:10px;color:#3b6dff;">{{ otp }}</span>
+    </div>
+    <p style="color:#64748b;font-size:13px;">⏰ Expires in 5 minutes. 🔒 Never share this code.</p>
+    <hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0;"/>
+    <p style="color:#94a3b8;font-size:12px;text-align:center;">© {{ app_name }}</p>
+  </div>
+</div>

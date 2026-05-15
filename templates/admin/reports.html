@@ -1,0 +1,12 @@
+{% extends "admin/_layout.html" %}
+{% block title %}Reports — Admin{% endblock %}
+{% block admin_content %}
+<div class="card">
+  <h2 class="text-xl font-bold mb-4">Reports</h2>
+  {% if items %}
+  <ul class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+    {% for r in items %}<li class="py-2">{{ r.created_at.strftime('%b %d %H:%M') }} — {{ r.reason or 'report' }} — {{ r.details or '' }}</li>{% endfor %}
+  </ul>
+  {% else %}<p class="text-slate-500 text-center py-6">No reports.</p>{% endif %}
+</div>
+{% endblock %}

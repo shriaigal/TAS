@@ -1,0 +1,290 @@
+/* =============================================
+   TAS APP — COMPLETE CORRECTED STYLESHEET
+   ============================================= */
+
+/* ── Navigation links ── */
+.nav-link {
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  color: inherit;
+  transition: background-color .2s, color .2s;
+  text-decoration: none;
+}
+.nav-link:hover { background: rgba(59,109,255,.08); color: #2952e0; }
+.dark .nav-link:hover { background: rgba(59,109,255,.18); color: #93b4ff; }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .55rem 1rem;
+  border-radius: .6rem;
+  font-weight: 600;
+  font-size: .875rem;
+  transition: all .2s;
+  border: 1px solid transparent;
+  cursor: pointer;
+  line-height: 1;
+}
+.btn-primary {
+  background: linear-gradient(135deg, #3b6dff, #5b3bff);
+  color: #fff;
+  box-shadow: 0 6px 20px -6px rgba(59,109,255,.55);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px -8px rgba(59,109,255,.7);
+}
+/* Ghost light (for light backgrounds) */
+.btn-ghost {
+  background: transparent;
+  color: #0f172a;               /* ← was inherit: explicit dark text in light mode */
+  border-color: rgba(148,163,184,.5);
+}
+.btn-ghost:hover { background: rgba(148,163,184,.12); }
+
+/* Ghost dark (for dark backgrounds) */
+.dark .btn-ghost {
+  color: #e2e8f0;               /* ← clear light text on dark bg */
+  border-color: rgba(148,163,184,.3);
+}
+.dark .btn-ghost:hover { background: rgba(148,163,184,.15); }
+
+.btn-danger { background: #ef4444; color: #fff; }
+.btn-danger:hover { background: #dc2626; }
+
+/* ── Cards ── */
+.card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px -12px rgba(15,23,42,.12);
+  padding: 1.25rem;
+  color: #0f172a;               /* ← explicit: never inherit from a dark ancestor */
+}
+.dark .card {
+  background: rgba(30,41,59,.85);  /* ← was .7, too transparent over dark page bg */
+  border-color: rgba(51,65,85,.7);
+  backdrop-filter: blur(8px);
+  color: #f1f5f9;               /* ← explicit white text */
+}
+
+/* ── Glass ── */
+.glass {
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.45);
+  color: #0f172a;
+}
+.dark .glass {
+  background: rgba(15,23,42,.65);  /* ← was .55, raised opacity for readability */
+  border-color: rgba(71,85,105,.55);
+  color: #f1f5f9;               /* ← explicit */
+}
+
+/* ── Form inputs ── */
+.input, .select, .textarea {
+  width: 100%;
+  padding: .65rem .9rem;
+  border-radius: .6rem;
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  font-size: .875rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+.dark .input,
+.dark .select,
+.dark .textarea {
+  background: #0f172a;
+  color: #f1f5f9;               /* ← was implicit, now explicit */
+  border-color: #334155;
+}
+/* Placeholder text — light mode */
+.input::placeholder, .textarea::placeholder { color: #94a3b8; }
+/* Placeholder text — dark mode */
+.dark .input::placeholder,
+.dark .textarea::placeholder { color: #475569; }  /* ← muted but visible, not invisible */
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: #3b6dff;
+  box-shadow: 0 0 0 4px rgba(59,109,255,.18);
+}
+
+/* ── Alerts ── */
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem 1rem;
+  border-radius: .7rem;
+  font-size: .875rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+}
+
+/* Light mode */
+.alert-success { background: #ecfdf5; color: #14532d; border-color: #bbf7d0; }
+.alert-danger,
+.alert-error   { background: #fef2f2; color: #7f1d1d; border-color: #fecaca; }
+.alert-warning { background: #fffbeb; color: #713f12; border-color: #fde68a; }
+.alert-info    { background: #eff6ff; color: #1e3a8a; border-color: #bfdbfe; }
+
+/* Dark mode — fixed contrast: deep tinted bg + bright same-hue text */
+.dark .alert-success {
+  background: rgba(21,128,61,.22);
+  color: #86efac;               /* green-300: clearly readable on dark green bg */
+  border-color: rgba(34,197,94,.38);
+}
+.dark .alert-danger,
+.dark .alert-error {
+  background: rgba(127,29,29,.35);
+  color: #fca5a5;               /* red-300: readable on dark red bg */
+  border-color: rgba(239,68,68,.45);
+}
+.dark .alert-warning {
+  background: rgba(133,77,14,.32);
+  color: #fde68a;               /* amber-200: readable on dark amber bg */
+  border-color: rgba(234,179,8,.4);
+}
+.dark .alert-info {
+  background: rgba(29,78,216,.25);
+  color: #bfdbfe;               /* blue-200: readable on dark blue bg */
+  border-color: rgba(96,165,250,.4);
+}
+
+/* ── Badges ── */
+.badge {
+  display: inline-block;
+  padding: .2rem .65rem;
+  border-radius: 9999px;
+  font-size: .75rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Light mode */
+.badge-low      { background: #dcfce7; color: #14532d; }
+.badge-moderate { background: #fef9c3; color: #713f12; }
+.badge-high     { background: #ffedd5; color: #7c2d12; }
+.badge-severe   { background: #fee2e2; color: #7f1d1d; }
+
+/* Dark mode — border + brighter text for visibility */
+.dark .badge-low {
+  background: rgba(21,128,61,.25);
+  color: #86efac;
+  border: 1px solid rgba(34,197,94,.35);
+}
+.dark .badge-moderate {
+  background: rgba(133,77,14,.3);
+  color: #fde68a;
+  border: 1px solid rgba(234,179,8,.35);
+}
+.dark .badge-high {
+  background: rgba(154,52,18,.3);
+  color: #fdba74;
+  border: 1px solid rgba(249,115,22,.35);
+}
+.dark .badge-severe {
+  background: rgba(127,29,29,.35);
+  color: #fca5a5;
+  border: 1px solid rgba(239,68,68,.4);
+}
+
+/* ── Map ── */
+#map {
+  width: 100%;
+  height: 60vh;
+  min-height: 420px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+@media (max-width: 768px) {
+  #map { height: 55vh; min-height: 360px; }
+}
+
+/* ── Autocomplete ── */
+.autocomplete { position: relative; }
+.suggestions {
+  position: absolute;
+  top: 100%; left: 0; right: 0;
+  z-index: 30;
+  background: #fff;
+  color: #0f172a;               /* ← explicit */
+  border: 1px solid #e2e8f0;
+  border-radius: .5rem;
+  margin-top: 4px;
+  max-height: 220px;
+  overflow-y: auto;
+  display: none;
+  box-shadow: 0 12px 30px -12px rgba(15,23,42,.25);
+}
+.dark .suggestions {
+  background: #1e293b;
+  color: #e2e8f0;               /* ← explicit: was missing */
+  border-color: #334155;
+}
+.suggestions.show { display: block; }
+.suggestions li {
+  padding: .55rem .85rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: .9rem;
+  color: inherit;               /* inherits from .suggestions */
+}
+.suggestions li:hover,
+.suggestions li.active { background: #eef4ff; color: #1e3a8a; }
+.dark .suggestions li:hover,
+.dark .suggestions li.active { background: rgba(30,58,138,.35); color: #dbeafe; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.animate-fade-up { animation: fadeUp .5s ease both; }
+
+/* ── Hero gradient ── */
+.hero-grad {
+  background:
+    radial-gradient(ellipse at top left, rgba(59,109,255,.18), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(124,58,237,.15), transparent 50%);
+}
+.dark .hero-grad {
+  background:
+    radial-gradient(ellipse at top left, rgba(59,109,255,.28), transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(124,58,237,.25), transparent 50%);
+}
+/* ---------- Upgraded route planner styles ---------- */
+#map { height: 540px; border-radius: 12px; overflow: hidden; }
+@media (max-width: 768px) { #map { height: 380px; } }
+
+.legend {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  margin-top: 10px; padding: 8px 12px;
+  background: rgba(15, 23, 42, .65);
+  border: 1px solid rgba(148, 163, 184, .15);
+  border-radius: 10px; font-size: 12px; color: #cbd5e1;
+}
+.legend i {
+  display: inline-block; width: 14px; height: 6px;
+  border-radius: 3px; margin-right: 6px; vertical-align: middle;
+}
+
+.chart-wrap { position: relative; height: 280px; }
+
+.stats-grid .stat {
+  display: flex; flex-direction: column;
+  background: rgba(30, 41, 59, .55);
+  border: 1px solid rgba(148, 163, 184, .12);
+  border-radius: 10px; padding: 8px 10px;
+}
+.stats-grid .stat span { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: .04em; }
+.stats-grid .stat b { font-size: 14px; color: #e2e8f0; margin-top: 2px; }
+
+.animate-fade-up { animation: fadeUp .35s ease-out both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }

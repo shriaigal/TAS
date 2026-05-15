@@ -1,0 +1,423 @@
+{% extends "base.html" %}
+{% block title %}{{ APP_NAME }} — Smart Route Optimization{% endblock %}
+{% block content %}
+<section class="hero-grad">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-24 grid md:grid-cols-2 gap-10 items-center">
+<div class="fixed inset-0 -z-10 flex items-center justify-center">
+  <img 
+    src="/static/img/logo.png"
+    alt="Background"
+    class="w-[70%] h-[70%] object-contain opacity-30"
+  >
+</div>
+    <div class="animate-fade-up">
+      <!-- <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 dark:bg-brand-700/20 dark:text-brand-100">AI · ML · Dijkstra · DFS</span> -->
+<h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-left whitespace-nowrap">
+  {{ APP_NAME }}
+</h1>
+<p class="mt-5 text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed text-justify">
+  TAS helps commuters discover the fastest and smartest routes across Bangalore using
+  Machine Learning, real-time traffic prediction, Dijkstra path optimization,
+  and intelligent road analytics.
+</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        {% if current_user.is_authenticated %}
+          <a href="{{ url_for('traffic.home') }}" class="btn btn-primary">Open Route Planner →</a>
+        {% else %}
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Get Started Free</a>
+          <a href="{{ url_for('auth.login') }}" class="btn btn-ghost">I have an account</a>
+        {% endif %}
+      </div>
+      <div class="mt-10 grid grid-cols-3 gap-4 max-w-md">
+        <div><div class="text-2xl font-bold text-brand-600">100+</div><div class="text-xs text-slate-500">Locations</div></div>
+        <div><div class="text-2xl font-bold text-brand-600">ML</div><div class="text-xs text-slate-500">Predictions</div></div>
+        <div><div class="text-2xl font-bold text-brand-600">Real</div><div class="text-xs text-slate-500">Road paths</div></div>
+      </div>
+    </div>
+    <div class="relative animate-fade-up">
+
+  <!-- Glow Effect -->
+  <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-purple-600 rounded-3xl blur-2xl opacity-20"></div>
+
+  <div class="relative card overflow-hidden border border-white/10 dark:border-white/5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
+
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-brand-500 via-indigo-500 to-purple-600 p-6 text-white">
+
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-sm opacity-90 flex items-center gap-2">
+            🧠 AI Traffic Analytics
+          </div>
+
+          <h3 class="text-2xl font-bold mt-2">
+            Smart Traffic Prediction
+          </h3>
+
+          <p class="text-sm opacity-90 mt-1">
+            Real-time ML powered road intelligence
+          </p>
+        </div>
+
+        <div class="h-14 w-14 rounded-2xl bg-white/20 flex items-center justify-center text-3xl backdrop-blur-md">
+          🚦
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Body -->
+    <div class="p-6 space-y-5">
+
+      <!-- Prediction -->
+      <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/60 p-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-sm text-slate-500 dark:text-slate-400">
+              Predicted Travel Time
+            </div>
+
+            <div class="text-3xl font-bold mt-1">
+              42 mins
+            </div>
+          </div>
+
+          <div class="text-4xl">
+            ⏱️
+          </div>
+        </div>
+      </div>
+
+      <!-- Traffic Level -->
+      <div class="space-y-3">
+
+        <div class="flex items-center justify-between">
+          <span class="text-sm font-medium">
+            Traffic Density
+          </span>
+
+          <span class="badge badge-moderate">
+            Moderate
+          </span>
+        </div>
+
+        <div class="w-full h-3 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
+          <div class="h-full w-[65%] bg-gradient-to-r from-amber-400 to-orange-500 rounded-full"></div>
+        </div>
+
+      </div>
+
+      <!-- Analytics Grid -->
+      <div class="grid grid-cols-2 gap-4">
+
+        <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/60 p-4">
+          <div class="text-xs text-slate-500">
+            AI Confidence
+          </div>
+
+          <div class="mt-2 text-2xl font-bold text-emerald-500">
+            95%
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-slate-100 dark:bg-slate-800/60 p-4">
+          <div class="text-xs text-slate-500">
+            Road Status
+          </div>
+
+          <div class="mt-2 text-2xl font-bold text-brand-500">
+            Stable
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Stats -->
+      <div class="grid grid-cols-3 gap-3 pt-2">
+
+        <div class="text-center rounded-xl bg-slate-100 dark:bg-slate-800/60 p-3">
+          <div class="text-lg font-bold text-brand-500">
+            24°C
+          </div>
+
+          <div class="text-xs text-slate-500 mt-1">
+            Weather
+          </div>
+        </div>
+
+        <div class="text-center rounded-xl bg-slate-100 dark:bg-slate-800/60 p-3">
+          <div class="text-lg font-bold text-amber-500">
+            68%
+          </div>
+
+          <div class="text-xs text-slate-500 mt-1">
+            Traffic
+          </div>
+        </div>
+
+        <div class="text-center rounded-xl bg-slate-100 dark:bg-slate-800/60 p-3">
+          <div class="text-lg font-bold text-emerald-500">
+            Low
+          </div>
+
+          <div class="text-xs text-slate-500 mt-1">
+            Risk
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+  </div>
+<!-- </section>
+
+<section class="max-w-7xl mx-auto px-4 sm:px-6 py-16"> -->
+<section class="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+
+  <!-- Background Glow -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-0 left-0 w-52 sm:w-72 h-52 sm:h-72 bg-brand-500/10 blur-3xl rounded-full"></div>
+    <div class="absolute bottom-0 right-0 w-52 sm:w-72 h-52 sm:h-72 bg-purple-500/10 blur-3xl rounded-full"></div>
+  </div>
+
+  <!-- Section Heading -->
+  <div class="text-center mb-12 sm:mb-16 px-4">
+
+    <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-500/20 bg-brand-500/10 text-brand-600 dark:text-brand-300 text-xs sm:text-sm font-medium">
+      🚦 Route Optimization Features
+    </span>
+
+<h2 class="mt-5 text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-center">
+
+  <span class="block">
+    Built For Better
+  </span>
+
+  <span class="block bg-gradient-to-r from-brand-500 to-purple-600 bg-clip-text ">
+    Navigation
+  </span>
+
+</h2>
+
+    <p class="mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+      TAS combines graph algorithms, route analysis, and road-network mapping
+      to improve route planning and travel visualization.
+    </p>
+
+  </div>
+
+  <!-- Cards -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-7 px-4 sm:px-6">
+
+    {% for f in [
+
+      (
+        '🧠',
+        'Travel Time Prediction',
+        'Estimates travel duration using route distance and connected road conditions.',
+        'Dijkstra + DFS',
+        'Path Algorithms',
+        'from-emerald-500 to-teal-500'
+      ),
+
+      (
+        '🗺️',
+        'Road Path Mapping',
+        'Displays routes through connected road paths using OSRM integration.',
+        'OSRM',
+        'Road Mapping',
+        'from-sky-500 to-indigo-500'
+      ),
+
+      (
+        '📈',
+        'Traffic Visualization',
+        'Shows route conditions and traffic indicators for route comparison.',
+        'Visualization',
+        'Route Insights',
+        'from-purple-500 to-pink-500'
+      )
+
+    ] %}
+
+    <div class="group relative overflow-hidden rounded-3xl border border-white/10 dark:border-white/5 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-500">
+
+      <!-- Glow -->
+      <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br {{ f[5] }} blur-3xl"></div>
+
+      <!-- Content -->
+      <div class="relative p-5 sm:p-7 lg:p-8">
+
+        <!-- Top -->
+        <div class="flex items-start justify-between gap-4">
+
+          <!-- Icon -->
+          <div class="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl sm:rounded-3xl bg-gradient-to-br {{ f[5] }} flex items-center justify-center text-3xl sm:text-4xl shadow-xl shrink-0">
+            {{ f[0] }}
+          </div>
+
+          <!-- Right Text -->
+          <div class="text-right min-w-0">
+
+            <div class="text-sm sm:text-lg font-bold text-slate-900 dark:text-white break-words">
+              {{ f[3] }}
+            </div>
+
+            <div class="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 mt-1">
+              {{ f[4] }}
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Title -->
+        <h3 class="mt-6 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white leading-snug">
+          {{ f[1] }}
+        </h3>
+
+        <!-- Description -->
+        <p class="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+          {{ f[2] }}
+        </p>
+
+        <!-- Bottom -->
+        <!-- Bottom -->
+<div class="mt-6 grid grid-cols-3 gap-2 sm:gap-3">
+
+  {% if loop.index == 1 %}
+
+  <!-- Card 1 -->
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-brand-500">
+      Faster
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      ETA Results
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-emerald-500">
+      Dynamic
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Path Checks
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-purple-500">
+      Better
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Time Planning
+    </div>
+
+  </div>
+
+  {% elif loop.index == 2 %}
+
+  <!-- Card 2 -->
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-sky-500">
+      Connected
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Road Paths
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-indigo-500">
+      Accurate
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Mapping
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-cyan-500">
+      Smooth
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Visualization
+    </div>
+
+  </div>
+
+  {% elif loop.index == 3 %}
+
+  <!-- Card 3 -->
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-pink-500">
+      Route
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Monitoring
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-violet-500">
+      Traffic
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Indicators
+    </div>
+
+  </div>
+
+  <div class="rounded-xl sm:rounded-2xl bg-slate-100 dark:bg-slate-800/70 p-3 sm:p-4 text-center">
+
+    <div class="text-sm sm:text-base font-bold text-fuchsia-500">
+      Travel
+    </div>
+
+    <div class="text-[10px] sm:text-[11px] text-slate-500 mt-1">
+      Comparison
+    </div>
+
+  </div>
+
+  {% endif %}
+
+</div>
+
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+</section>
+</section>
+{% endblock %}

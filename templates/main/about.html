@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}About — {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+
+<section class="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+
+    <!-- Background Blur -->
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute top-0 left-1/4 w-72 h-72 bg-cyan-500/10 blur-3xl rounded-full"></div>
+        <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-indigo-500/10 blur-3xl rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero -->
+        <div class="text-center max-w-4xl mx-auto">
+
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-sm font-semibold mb-6">
+                🚦 AI Powered Traffic Analytics Platform
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                About
+                <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                    {{ APP_NAME }}
+                </span>
+            </h1>
+
+            <p class="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+                The Traffic Analytics System (TAS) is an intelligent AI-powered platform developed to analyze
+                traffic conditions, predict travel time, and optimize routing using Machine Learning,
+                graph-based algorithms, and real-time analytics visualization.
+            </p>
+
+        </div>
+
+        <!-- Vision & Objective -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
+
+            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur p-8 shadow-xl">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-2xl">
+                        🎯
+                    </div>
+                    <h2 class="text-2xl font-bold">Vision</h2>
+                </div>
+
+                <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                    To build an intelligent and scalable traffic analytics platform that improves travel planning
+                    through AI-driven route optimization and predictive traffic analysis.
+                </p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 backdrop-blur p-8 shadow-xl">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-2xl">
+                        🚀
+                    </div>
+                    <h2 class="text-2xl font-bold">Objective</h2>
+                </div>
+
+                <ul class="space-y-3 text-slate-600 dark:text-slate-300">
+                    <li>✅ Predict accurate Estimated Time of Arrival (ETA)</li>
+                    <li>✅ Analyze traffic conditions dynamically</li>
+                    <li>✅ Generate optimized and alternative routes</li>
+                    <li>✅ Improve routing efficiency using graph algorithms</li>
+                    <li>✅ Provide interactive traffic analytics visualization</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Workflow -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    How TAS Works
+                </h2>
+
+                <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+                    TAS combines Artificial Intelligence, route optimization algorithms,
+                    and analytics systems to generate intelligent traffic predictions
+                    and optimized routing recommendations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                {% set workflow = [
+                    ('🚦','User selects source and destination'),
+                    ('🧠','AI model predicts ETA using traffic patterns'),
+                    ('🛣️','OSRM generates road-snapped routes'),
+                    ('📍','Dijkstra finds shortest paths'),
+                    ('🔄','DFS generates alternative routes'),
+                    ('📊','Analytics engine processes travel insights')
+                ] %}
+
+                {% for icon, text in workflow %}
+                <div class="group rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-cyan-500/10">
+                    <div class="text-4xl mb-4">{{ icon }}</div>
+
+                    <h3 class="font-semibold text-lg">
+                        {{ text }}
+                    </h3>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    Key Features
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                {% set features = [
+                    ('🤖','AI-Based ETA Prediction'),
+                    ('🛣️','Smart Route Optimization'),
+                    ('🌍','Real-Time Traffic Analysis'),
+                    ('🗺️','Interactive Leaflet Maps'),
+                    ('📈','Analytics Dashboard'),
+                    ('🔐','Secure Authentication'),
+                    ('🕓','Route History Tracking'),
+                    ('🌙','Modern Responsive UI')
+                ] %}
+
+                {% for icon, title in features %}
+                <div class="rounded-3xl p-6 border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-lg hover:shadow-cyan-500/10 transition">
+
+                    <div class="text-4xl mb-4">
+                        {{ icon }}
+                    </div>
+
+                    <h3 class="text-xl font-bold mb-2">
+                        {{ title }}
+                    </h3>
+
+                    <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        Advanced intelligent traffic analysis and optimized routing
+                        integrated into a modern responsive platform.
+                    </p>
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="mt-20">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    Technology Stack
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+
+                {% set techs = [
+                    'Flask',
+                    'MongoDB',
+                    'Machine Learning',
+                    'XGBoost',
+                    'Pandas',
+                    'NumPy',
+                    'Leaflet.js',
+                    'TailwindCSS',
+                    'OSRM',
+                    'JavaScript',
+                    'REST APIs',
+                    'Python'
+                ] %}
+
+                {% for tech in techs %}
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-5 px-4 text-center font-semibold shadow-md hover:scale-105 transition">
+                    {{ tech }}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Future -->
+        <div class="mt-20">
+
+            <div class="rounded-3xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 p-8 lg:p-12">
+
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl sm:text-4xl font-bold">
+                        Future Enhancements
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                    {% set future = [
+                        '🚗 Live GPS Vehicle Tracking',
+                        '📡 IoT Traffic Sensor Integration',
+                        '☁️ Cloud Deployment',
+                        '📱 Mobile Application',
+                        '🧠 Advanced Deep Learning Models',
+                        '🚦 Smart Traffic Signal Prediction'
+                    ] %}
+
+                    {% for item in future %}
+                    <div class="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-lg">
+                        <p class="font-semibold">
+                            {{ item }}
+                        </p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

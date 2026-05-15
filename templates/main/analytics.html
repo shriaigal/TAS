@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Traffic Analytics — {{ APP_NAME }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+{% endblock %}
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+  <div class="flex items-center justify-between flex-wrap gap-3">
+    <div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold">AI Traffic Analytics</h1>
+      <p class="text-sm text-slate-500">Live insights from <span id="kpiRecords" class="font-semibold">…</span> records · Model: <span id="kpiModel" class="font-semibold text-brand-600">…</span></p>
+    </div>
+    <div class="flex gap-2">
+      <a href="{{ url_for('traffic.home') }}" class="btn btn-ghost text-sm">Route Planner</a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="card"><div class="text-xs text-slate-500">Locations</div><div id="kpiLocs" class="text-2xl font-extrabold">…</div></div>
+    <div class="card"><div class="text-xs text-slate-500">Routes</div><div id="kpiEdges" class="text-2xl font-extrabold">…</div></div>
+    <div class="card"><div class="text-xs text-slate-500">Avg Speed</div><div id="kpiSpeed" class="text-2xl font-extrabold">…</div><div class="text-xs text-slate-400">km/h</div></div>
+    <div class="card"><div class="text-xs text-slate-500">Avg Congestion</div><div id="kpiCong" class="text-2xl font-extrabold">…</div><div class="text-xs text-slate-400">% capacity</div></div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-6">
+    <div class="card animate-fade-up"><h3 class="font-bold mb-3">Hourly Vehicle Volume</h3><canvas id="chartHourly" height="180"></canvas></div>
+    <div class="card animate-fade-up"><h3 class="font-bold mb-3">Hourly Average Speed (km/h)</h3><canvas id="chartSpeed" height="180"></canvas></div>
+    <!-- <div class="card animate-fade-up"><h3 class="font-bold mb-3">Severity Distribution</h3><canvas id="chartSeverity" height="180"></canvas></div>
+    <div class="card animate-fade-up"><h3 class="font-bold mb-3">Weather Impact (avg vehicles)</h3><canvas id="chartWeather" height="180"></canvas></div> -->
+  </div>
+
+  <!-- <div class="grid lg:grid-cols-2 gap-6">
+    <div class="card animate-fade-up">
+      <h3 class="font-bold mb-3">Top Congested Routes</h3>
+      <div class="overflow-x-auto"><table class="w-full text-sm">
+        <thead><tr class="text-left text-xs uppercase text-slate-500 border-b border-slate-200 dark:border-slate-700"><th class="py-2">Route</th><th>Density</th><th>Vehicles</th><th>Speed</th></tr></thead>
+        <tbody id="tblCongested"></tbody>
+      </table></div>
+    </div> -->
+    <div class="card animate-fade-up">
+      <h3 class="font-bold mb-3">Top Areas by Volume</h3>
+      <div class="overflow-x-auto"><table class="w-full text-sm">
+        <thead><tr class="text-left text-xs uppercase text-slate-500 border-b border-slate-200 dark:border-slate-700"><th class="py-2">Area</th><th>Vehicles</th><th>Speed</th></tr></thead>
+        <tbody id="tblAreas"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+<div class="card animate-fade-up map-container">
+  <h3 class="font-bold mb-3">Live Traffic Heatmap</h3>
+  <div id="map" style="height:480px;border-radius:.75rem"></div>
+</div>
+
+<style>
+  .map-container{
+    width: 81%;
+    margin: auto;
+  }
+
+  @media (max-width: 768px){
+    .map-container{
+      width: 100%;
+    }
+  }
+</style>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}
